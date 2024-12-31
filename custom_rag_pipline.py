@@ -19,7 +19,7 @@ import base64
 # )
 
 
-class pipe:
+class Pipeline:
     class Valves(BaseModel):
         # Template for modifying context information in the user interface
         RAG_TEMPLATE: str = Field(
