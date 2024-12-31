@@ -12,10 +12,11 @@ from typing import Optional
 import requests  # Importing the requests library to handle HTTP requests
 import base64
 
-from utils.misc import (
-    get_last_user_message,
-    add_or_update_system_message,
-)
+
+# from utils.misc import (
+#     get_last_user_message,
+#     add_or_update_system_message,
+# )
 
 
 class Filter:
@@ -44,7 +45,8 @@ Given the context information, answer the user query.""",
     def inlet(self, body: dict, __user__: Optional[dict] = None) -> dict:
         files = body.get("files", [])
         messages = body.get("messages", [])
-        user_query = get_last_user_message(messages)
+        # user_query = get_last_user_message(messages)
+        user_query = "what's your name?"
         context = None
 
         if files:
@@ -87,7 +89,8 @@ Given the context information, answer the user query.""",
                 system_message = self.valves.RAG_TEMPLATE.replace(
                     "{{CONTEXT}}", context
                 )
-                body["messages"] = add_or_update_system_message(
-                    system_message, messages
-                )
+                # body["messages"] = add_or_update_system_message(
+                #     system_message, messages
+                # )
+                body["messages"] = "Lali Landau!!!!"
         return body
