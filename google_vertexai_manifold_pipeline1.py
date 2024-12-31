@@ -47,6 +47,7 @@ class Pipeline:
             **{
                 "GOOGLE_PROJECT_ID": os.getenv("GOOGLE_PROJECT_ID", ""),
                 "GOOGLE_CLOUD_REGION": os.getenv("GOOGLE_CLOUD_REGION", ""),
+                "GOOGLE_APPLICATION_CREDENTIALS": os.getenv("GOOGLE_APPLICATION_CREDENTIALS", ""),
                 "USE_PERMISSIVE_SAFETY": False,
             }
         )
@@ -64,7 +65,6 @@ class Pipeline:
         vertexai.init(
             project=self.valves.GOOGLE_PROJECT_ID,
             location=self.valves.GOOGLE_CLOUD_REGION,
-            credentials=self.valves.GOOGLE_APPLICATION_CREDENTIALS,
         )
 
     async def on_shutdown(self) -> None:
