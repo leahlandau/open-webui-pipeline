@@ -36,7 +36,6 @@ class Pipeline:
 
         GOOGLE_PROJECT_ID: str = ""
         GOOGLE_CLOUD_REGION: str = ""
-        GOOGLE_APPLICATION_CREDENTIALS : str = ""
         USE_PERMISSIVE_SAFETY: bool = Field(default=False)
 
     def __init__(self):
@@ -47,7 +46,6 @@ class Pipeline:
             **{
                 "GOOGLE_PROJECT_ID": os.getenv("GOOGLE_PROJECT_ID", ""),
                 "GOOGLE_CLOUD_REGION": os.getenv("GOOGLE_CLOUD_REGION", ""),
-                "GOOGLE_APPLICATION_CREDENTIALS": os.getenv("GOOGLE_APPLICATION_CREDENTIALS", ""),
                 "USE_PERMISSIVE_SAFETY": False,
             }
         )
