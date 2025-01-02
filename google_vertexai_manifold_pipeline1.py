@@ -17,6 +17,7 @@ import os
 from typing import Iterator, List, Union
 
 import vertexai
+from google.oauth2 import service_account
 from pydantic import BaseModel, Field
 from vertexai.generative_models import (
     Content,
@@ -60,9 +61,11 @@ class Pipeline:
         """This function is called when the server is started."""
 
         print(f"on_startup:{__name__}")
+        credentials = service_account.Credentials.from_service_account_file("sublime-vine-445509-s8-04e449459563.json")
         vertexai.init(
             project=self.valves.GOOGLE_PROJECT_ID,
             location=self.valves.GOOGLE_CLOUD_REGION,
+            credentials=credentials
         )
 
     async def on_shutdown(self) -> None:
@@ -72,9 +75,11 @@ class Pipeline:
     async def on_valves_updated(self) -> None:
         """This function is called when the valves are updated."""
         print(f"on_valves_updated:{__name__}")
+        credentials = service_account.Credentials.from_service_account_file("sublime-vine-445509-s8-04e449459563.json")
         vertexai.init(
             project=self.valves.GOOGLE_PROJECT_ID,
             location=self.valves.GOOGLE_CLOUD_REGION,
+            credentials=credentials,
         )
 
     def pipe(
